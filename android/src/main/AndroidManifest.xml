@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.scandit.barcodescanner_sdk_flutter">
+
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <application android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name="com.scandit.barcodescanner_sdk_flutter.BarcodeScanActivity" />
+        <activity android:name="com.scandit.barcodescanner_sdk_flutter.CameraPermissionActivity" />
+    </application>
+
+</manifest>

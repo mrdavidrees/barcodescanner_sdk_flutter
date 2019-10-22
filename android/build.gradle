@@ -1,0 +1,56 @@
+group 'com.scandit.barcodescanner_sdk_flutter'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:3.3.0"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    packagingOptions {
+        pickFirst '**/*.so'
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    api "com.scandit.datacapture:core:6.0.0"
+    api "com.scandit.datacapture:barcode:6.0.0"
+
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "com.google.android.material:material:1.0.0"
+
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+}
