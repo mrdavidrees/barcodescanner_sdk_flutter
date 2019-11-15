@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/scanner_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bgControl"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/flash_control_bg"
+        app:layout_constraintBottom_toBottomOf="@id/imgFlash"
+        app:layout_constraintEnd_toEndOf="@id/grpFlashButtons"
+        app:layout_constraintStart_toStartOf="@id/imgFlash"
+        app:layout_constraintTop_toTopOf="@id/imgFlash" />
+
+    <ImageView
+        android:id="@+id/imgFlash"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="48dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_flash_on_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/dividerBetweenImageAndGroup"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/dividerBetweenImageAndGroup"
+        android:layout_width="1dp"
+        android:layout_height="24dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@id/imgFlash"
+        app:layout_constraintEnd_toStartOf="@id/grpFlashButtons"
+        app:layout_constraintStart_toEndOf="@id/imgFlash"
+        app:layout_constraintTop_toTopOf="@id/imgFlash" />
+
+    <RadioGroup
+        android:id="@+id/grpFlashButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/imgFlash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/dividerBetweenImageAndGroup"
+        app:layout_constraintTop_toTopOf="@id/imgFlash">
+
+        <RadioButton
+            android:id="@+id/btnOn"
+            style="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:layout_width="96dp"
+            android:layout_height="36dp"
+            android:background="@drawable/flash_button_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/on"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/btnOff"
+            style="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:layout_width="96dp"
+            android:layout_height="36dp"
+            android:background="@drawable/flash_button_bg"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/off"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

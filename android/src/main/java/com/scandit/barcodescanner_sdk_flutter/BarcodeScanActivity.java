@@ -13,7 +13,8 @@
  */
 
 package com.scandit.barcodescanner_sdk_flutter;
-
+import android.view.ViewGroup;
+import android.widget.RadioGroup;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -28,6 +29,10 @@ import com.scandit.datacapture.core.source.Camera;
 import com.scandit.datacapture.core.source.FrameSourceState;
 import com.scandit.datacapture.core.ui.DataCaptureView;
 import com.scandit.datacapture.core.ui.viewfinder.RectangularViewfinder;
+import com.scandit.barcodescanner_sdk_flutter.R;
+import com.scandit.datacapture.core.source.FrameSourceListener;
+import com.scandit.datacapture.core.source.FrameSourceState;
+import com.scandit.datacapture.core.source.TorchState;
 import java.util.HashSet;
 
 public class BarcodeScanActivity extends CameraPermissionActivity implements BarcodeCaptureListener {
@@ -130,7 +135,33 @@ public class BarcodeScanActivity extends CameraPermissionActivity implements Bar
         BarcodeCaptureOverlay overlay = BarcodeCaptureOverlay.newInstance(barcodeCapture, dataCaptureView);
         overlay.setViewfinder(new RectangularViewfinder());
 
-        setContentView(dataCaptureView);
+//        setContentView(dataCaptureView);
+        setContentView(R.layout.activity_flash_control);
+        ((ViewGroup) findViewById(R.id.scanner_container)).addView(dataCaptureView);
+        RadioGroup grpFlashButtons = findViewById(R.id.grpFlashButtons);
+        if (camera.getDesiredTorchState() == TorchState.ON) {
+            grpFlashButtons.check(R.id.btnOn);
+        } else {
+            grpFlashButtons.check(R.id.btnOff);
+        }
+        grpFlashButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == R.id.btnOn) {
+                    turnOnFlash();
+                } else {
+                    turnOffFlash();
+                }
+            }
+        });
+    }
+
+    private void turnOnFlash() {
+        camera.setDesiredTorchState(TorchState.ON);
+    }
+
+    private void turnOffFlash() {
+        camera.setDesiredTorchState(TorchState.OFF);
     }
 
     @Override
