@@ -17,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import android.view.MenuItem;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AlertDialog;
 import com.scandit.datacapture.barcode.capture.*;
 import com.scandit.datacapture.barcode.data.Barcode;
@@ -137,6 +140,15 @@ public class BarcodeScanActivity extends CameraPermissionActivity implements Bar
 
 //        setContentView(dataCaptureView);
         setContentView(R.layout.activity_flash_control);
+
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbarMain));
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         ((ViewGroup) findViewById(R.id.scanner_container)).addView(dataCaptureView);
         RadioGroup grpFlashButtons = findViewById(R.id.grpFlashButtons);
         if (camera.getDesiredTorchState() == TorchState.ON) {
@@ -162,6 +174,15 @@ public class BarcodeScanActivity extends CameraPermissionActivity implements Bar
 
     private void turnOffFlash() {
         camera.setDesiredTorchState(TorchState.OFF);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
