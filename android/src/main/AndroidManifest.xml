@@ -5,8 +5,8 @@
   <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <application android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name="com.scandit.barcodescanner_sdk_flutter.BarcodeScanActivity" />
+    <application android:theme="@style/AppTheme">
+        <activity android:name="com.scandit.barcodescanner_sdk_flutter.BarcodeScanActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.scandit.barcodescanner_sdk_flutter.CameraPermissionActivity" />
     </application>
 
