@@ -90,7 +90,7 @@ public class BarcodeScanActivity extends CameraPermissionActivity implements Bar
         // symbologies.add(Symbology.EAN13_UPCA);
         // symbologies.add(Symbology.EAN8);
         // symbologies.add(Symbology.UPCE);
-        symbologies.add(Symbology.QR);
+        // symbologies.add(Symbology.QR);
         symbologies.add(Symbology.PDF417);
         // symbologies.add(Symbology.DATA_MATRIX);
         // symbologies.add(Symbology.CODE39);

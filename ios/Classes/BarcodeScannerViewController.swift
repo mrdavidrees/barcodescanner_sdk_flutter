@@ -106,7 +106,7 @@ class BarcodeScannerViewController: UIViewController {
         // settings.set(symbology: .ean13UPCA, enabled: true)
         // settings.set(symbology: .ean8, enabled: true)
         // settings.set(symbology: .upce, enabled: true)
-        settings.set(symbology: .qr, enabled: true)
+        // settings.set(symbology: .qr, enabled: true)
         settings.set(symbology: .pdf417, enabled: true)
         // settings.set(symbology: .dataMatrix, enabled: true)
         // settings.set(symbology: .code39, enabled: true)
@@ -148,9 +148,11 @@ class BarcodeScannerViewController: UIViewController {
         guard device.hasTorch else { return }
         
         
-        let flashIcon = UIView(frame: .zero)
+        let flashIcon = UIImageView(frame: .zero)
         flashIcon.translatesAutoresizingMaskIntoConstraints = false
-        flashIcon.backgroundColor = .red
+        flashIcon.image = UIImage(named: "flash_icon.png", in: Bundle(for: BarcodeScannerViewController.self), compatibleWith: nil )?.withRenderingMode(.alwaysTemplate)
+        flashIcon.contentMode = .scaleAspectFit
+        flashIcon.tintColor = .white
         
         let vBar = UIView(frame: .zero)
         vBar.translatesAutoresizingMaskIntoConstraints = false

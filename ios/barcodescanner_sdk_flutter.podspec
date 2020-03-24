@@ -14,6 +14,8 @@ Pod::Spec.new do |s|
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
+  s.resources = ['Assets/flash_icon.png']
+
   s.dependency 'Flutter'
   s.dependency 'ScanditBarcodeCapture'
 
