@@ -25,11 +25,11 @@ public class BarcodescannerSdkFlutterPlugin implements MethodCallHandler, Stream
     public static BarcodescannerSdkFlutterPlugin instance;
     private static final String TAG = BarcodescannerSdkFlutterPlugin.class.getSimpleName();
 
-    private FlutterActivity activity;
+    private Activity activity;
     private EventChannel.EventSink barcodeStream;
     public BarcodeScanActivity captureActivity;
 
-    private BarcodescannerSdkFlutterPlugin(FlutterActivity activity) {
+    private BarcodescannerSdkFlutterPlugin(Activity activity) {
         this.activity = activity;
     }
 
@@ -41,7 +41,7 @@ public class BarcodescannerSdkFlutterPlugin implements MethodCallHandler, Stream
             return;
         }
         final MethodChannel channel = new MethodChannel(registrar.messenger(), "barcodescanner_sdk_flutter");
-        instance = new BarcodescannerSdkFlutterPlugin((FlutterActivity) registrar.activity());
+        instance = new BarcodescannerSdkFlutterPlugin(registrar.activity());
         channel.setMethodCallHandler(instance);
 
         final EventChannel eventChannel = new EventChannel(registrar.messenger(), "barcodescanner_sdk_flutter_receiver");
