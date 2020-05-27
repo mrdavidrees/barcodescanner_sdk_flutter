@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.resources = ['Assets/flash_icon.png']
 
   s.dependency 'Flutter'
-  s.dependency 'ScanditBarcodeCapture'
+  s.dependency 'ScanditBarcodeCapture', '~> 6.0.2'
 
   s.ios.deployment_target = '10.0'
   s.swift_version = '5.0'
